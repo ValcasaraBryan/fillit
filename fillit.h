@@ -36,5 +36,9 @@ void		fill_lst(t_tetri **start, int i);
 void		addlink(t_tetri **start);
 t_tetri		*init_db(void);
 char		*tetridetector(char *str);
+char		*subdetector(char *str, int i, int k, char *pc);
+char		*library_generator(int id, char *str);
+int			tetricmp(char *str, t_tetri *start);
+int			ft_detection_error(int fd, char *str);
 
 #endif

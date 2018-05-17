@@ -15,32 +15,30 @@
 int		main(int argc, char **argv)
 {
 	int		fd;
-	int		ret;
 	char 	*str;
 	char	*sur;
+	char	*id;
+	int		id_piece;
 
- 	fd = 0;
- 	ret = 4;
- 	str = NULL;
- 	sur = NULL;
+ 	str = ft_memalloc(BUFF_SIZE + 1);
+ 	sur = ft_strdup("");
 	if (argc == 2)
 	{
-		if ((fd = open(argv[1], O_RDONLY)))
+		if (ft_detection_error(open(argv[1], O_RDONLY), str) == 1)
 		{
-			while (ret-- != 0)
+			fd = open(argv[1], O_RDONLY);
+			while ((str = ft_get_next_piece(fd)))
 			{
-				str = ft_get_next_piece(fd);
-				if (str)
-				{
-					//sur = tetridetector(str);
-					printf("%s\n", str);
-				}
-				else
-					printf("--- Error ---\n");
+				printf("%s", str);
+				id = tetridetector(str);
+				id_piece = tetricmp(id, init_db());
+				printf("piece = [%s]\n", id);
+				printf("piece = [%d]\n\n", id_piece);
+				sur = library_generator(id_piece, sur);
 			}
 		}
 	}
 	else
-		printf("error\n");
+		printf("--- Error Too Many Arguments ---\n");
 	return (0);
 }

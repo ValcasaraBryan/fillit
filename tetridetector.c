@@ -6,18 +6,51 @@
 /*   By: adstuder <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/15 22:21:37 by adstuder          #+#    #+#             */
-/*   Updated: 2018/05/15 23:16:23 by adstuder         ###   ########.fr       */
+/*   Updated: 2018/05/16 20:13:32 by adstuder         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdlib.h>
+#include <stdio.h>
 #include "fillit.h"
+
+char	*subdetector(char *str, int i, int k, char *pc)
+{
+	int j;
+
+	while (str[i] != '\0')
+	{
+		j = 0;
+		while (str[i + j] != '#' && str[i + j] != '\0')
+			j++;
+		if (str[i + j] == '#')
+		{
+			if (j == 2)
+				pc[k] = '-';
+			if (j == 3)
+				pc[k] = '<';
+			if (j == 4)
+				pc[k] = '$';
+			if (j >= 5)
+				return (NULL);
+			if (j == 2 || j == 3 || j == 4)
+				k++;
+			pc[k] = '#';
+			k++;
+		}
+		j++;
+		i = i + j;
+	}
+	pc[k] = '\0';
+	return (pc);
+}
 
 char	*tetridetector(char *str)
 {
-	char *pc;
-	int i;
-	int j;
-	int k;
+	char	*pc;
+	int		i;
+	int		j;
+	int		k;
 
 	if (!str)
 		return (NULL);
@@ -31,40 +64,7 @@ char	*tetridetector(char *str)
 		i++;
 	pc[k] = '#';
 	k++;
-	while (str[i] != '\0')
-	{
-		j = 0;
-		while (str[i + j] != '#' && str[i + j] != '\0')
-		{
-			j++;
-		}
-		if (j == 3)
-		{
-			pc[k] = '-';
-			k++;
-		}
-		if (j == 4)
-		{
-			pc[k] = '<';
-			k++;
-		}
-		if (j == 5)
-		{
-			pc[k] = '$';
-			k++;
-		}
-		if (str[i + j] == '#')
-		{
-				pc[k] = '#';
-				k++;
-		}
-		i = i + j;
-	}
-	while (pc[k] != '\0')
-	{
-		pc[k] = '.';
-		k++;
-	}
+	i++;
+	pc = subdetector(str, i, k, pc);
 	return (pc);
 }
-
