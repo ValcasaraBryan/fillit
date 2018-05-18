@@ -14,21 +14,22 @@
 
 char	*library_generator(int id, char *str)
 {
-	char *lib;
-	int sz;
-	int i;
+	char	*lib;
+	int		sz;
+	int		i;
 
-	sz = ft_strlen(str);
-	i = sz;
+	if (str)
+		sz = ft_strlen(str);
+	i = 0;
 	if (!(lib = malloc(sizeof(char) * sz + 2)))
 		return (NULL);
 	lib[sz + 1] = '\0';
-	while (str[i] != '\0')
+	while (i < sz)
 	{
 		lib[i] = str[i];
 		i++;
 	}
-	lib[i] = id + 48;
+	lib[i] = id;
 	free(str);
 	return (lib);
 }

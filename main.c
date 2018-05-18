@@ -14,31 +14,41 @@
 
 int		main(int argc, char **argv)
 {
-	int		fd;
-	char 	*str;
-	char	*sur;
 	char	*id;
-	int		id_piece;
+	char	*str;
+	char	**piece;
+	char 	*map;
+	int 	i;
 
- 	str = ft_memalloc(BUFF_SIZE + 1);
- 	sur = ft_strdup("");
+	str = ft_memalloc(BUFF_SIZE + 1);
+	i = 0;
 	if (argc == 2)
-	{
-		if (ft_detection_error(open(argv[1], O_RDONLY), str) == 1)
-		{
-			fd = open(argv[1], O_RDONLY);
-			while ((str = ft_get_next_piece(fd)))
-			{
-				printf("%s", str);
-				id = tetridetector(str);
-				id_piece = tetricmp(id, init_db());
-				printf("piece = [%s]\n", id);
-				printf("piece = [%d]\n\n", id_piece);
-				sur = library_generator(id_piece, sur);
-			}
-		}
-	}
+		id = ft_check_file(argv[1], str);
 	else
-		printf("--- Error Too Many Arguments ---\n");
+		printf("Too Many Arguments\n");
+	if (!str)
+		free(str);
+	if (id)
+	{
+		
+		if (!(map = ft_memalloc((ft_strlen(id) * (ft_strlen(id) + 1)))))
+			return (0);
+
+														// id = string où chaque case contient le code du tetriminos par rapport a la list
+														// ft_strlen(id) = correspond donc au nombre de pieces
+
+		piece = ft_piece(ft_strlen(id), id, init_db()); // generation des pieces dans un tableau a deux dimension
+		
+		ft_smallest_square(ft_strlen(id) + 1, map);     // generation de la map en fonction du nombre de piece + 1
+
+
+
+///////////////////////////////////////
+		while (piece[i])                           // affichage piece
+			printf("piece = [%s]\n", piece[i++]);
+		printf("%s", map);						   // affichage map
+//////////////////////////////////////
+	}
+ 	printf("-------------\n");
 	return (0);
 }

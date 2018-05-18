@@ -1,36 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_get_next_piece.c                                :+:      :+:    :+:   */
+/*   ft_smallest_square.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: brvalcas <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/05/15 22:59:13 by brvalcas          #+#    #+#             */
-/*   Updated: 2018/05/15 22:59:14 by brvalcas         ###   ########.fr       */
+/*   Created: 2018/05/18 07:49:12 by brvalcas          #+#    #+#             */
+/*   Updated: 2018/05/18 07:49:13 by brvalcas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-char	*ft_get_next_piece(int fd)
+char	*ft_smallest_square(int nb_piece, char *map)
 {
-	char		*buf;
-	char		*tmp;
-	int			ret;
+	int x;
+	int y;
+	int z;
 
-	ret = 0;
-	if ((!(buf = ft_memalloc(BUFF_SIZE + 1))
-		|| (!(ret = read(fd, buf, BUFF_SIZE)))))
-		return (NULL);
-	if (buf)
+	x = 0;
+	y = 0;
+	z = nb_piece - 1;
+	if (map && nb_piece)
 	{
-		if (ret == 21)
+		while (y != nb_piece)
 		{
-			tmp = ft_strndup(buf, 20);
-			free(buf);
-			return (tmp);
+			map[x] = '.';
+			x++;
+			if (x == ((nb_piece * nb_piece) - (nb_piece * z) + y))
+			{
+				map[x] = '\n';
+				x++;
+				z--;
+				y++;
+			}
 		}
+		map[x] = '\0';
+		return (map);
 	}
-	free(tmp);
-	return (buf);
+	return (NULL);
 }

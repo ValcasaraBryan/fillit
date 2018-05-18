@@ -12,16 +12,17 @@
 
 #include "fillit.h"
 
-int tetricmp(char *str, t_tetri *start)
+int		tetricmp(char *str, t_tetri *start)
 {
-	t_tetri *tmp;
+	t_tetri	*tmp;
 
 	tmp = start;
-	while (tmp)
-	{
-		if (ft_strcmp(str, tmp->piece) == 0)
-			return (tmp->id);
-		tmp = tmp->next;
-	}
+	if (tmp)
+		while (tmp)
+		{
+			if (ft_strcmp(str, tmp->piece) == 0)
+				return (tmp->id);
+			tmp = tmp->next;
+		}
 	return (-1);
 }

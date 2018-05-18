@@ -31,6 +31,8 @@ char	*subdetector(char *str, int i, int k, char *pc)
 				pc[k] = '<';
 			if (j == 4)
 				pc[k] = '$';
+			if (j >= 5)
+				return (NULL);
 			if (j == 2 || j == 3 || j == 4)
 				k++;
 			pc[k] = '#';
