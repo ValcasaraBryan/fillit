@@ -12,20 +12,18 @@
 
 #include "fillit.h"
 
-char	**ft_piece(unsigned int nb_piece, char *id_piece, t_tetri *list)
+char		**ft_piece(unsigned int nb_piece, char *id_piece, t_tetri *list,
+	char **piece)
 {
-	char 	**piece;
 	t_tetri *head;
-	int 	i;
-	int 	j;
-	int 	tmp;
+	int		i;
+	int		j;
+	int		tmp;
 
 	i = 0;
 	head = list;
 	if (nb_piece && id_piece && list)
 	{
-		if (!(piece = (char **)malloc(sizeof(char *) * nb_piece + 1)))
-			return (NULL);
 		piece[nb_piece + 1] = 0;
 		while (nb_piece)
 		{

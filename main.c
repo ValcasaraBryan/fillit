@@ -30,14 +30,15 @@ int		main(int argc, char **argv)
 		free(str);
 	if (id)
 	{
-		
+
 		if (!(map = ft_memalloc((ft_strlen(id) * (ft_strlen(id) + 1)))))
 			return (0);
-
+		if (!(piece = (char **)malloc(sizeof(char *) * ft_strlen(id) + 1)))
+			return (0);
 														// id = string où chaque case contient le code du tetriminos par rapport a la list
 														// ft_strlen(id) = correspond donc au nombre de pieces
 
-		piece = ft_piece(ft_strlen(id), id, init_db()); // generation des pieces dans un tableau a deux dimension
+		piece = ft_piece(ft_strlen(id), id, init_db(), piece); // generation des pieces dans un tableau a deux dimension
 		
 		ft_smallest_square(ft_strlen(id) + 1, map);     // generation de la map en fonction du nombre de piece + 1
 
