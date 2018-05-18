@@ -41,7 +41,7 @@ int			tetricmp(char *str, t_tetri *start);
 int			ft_detection_error(int fd, char *str);
 int			ft_send_error(int id_piece, char *id);
 char		*ft_check_file(char *argv, char *str);
-char		*ft_smallest_square(int nb_piece, char *map);
+int			ft_smallest_square(int nb_piece, char *map);
 char		**ft_piece(unsigned int nb_piece, char *id_piece, t_tetri *list, char **piece);
 
 #endif

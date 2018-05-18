@@ -12,7 +12,7 @@
 
 #include "fillit.h"
 
-char	*ft_smallest_square(int nb_piece, char *map)
+int		ft_smallest_square(int nb_piece, char *map)
 {
 	int x;
 	int y;
@@ -36,7 +36,7 @@ char	*ft_smallest_square(int nb_piece, char *map)
 			}
 		}
 		map[x] = '\0';
-		return (map);
+		return (nb_piece);
 	}
-	return (NULL);
+	return (0);
 }
