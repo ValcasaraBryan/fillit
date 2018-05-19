@@ -12,12 +12,12 @@
 
 NAME = fillit.a
 
-EXE = executable
+EXE = fillit
 
-SRC = initlist.c ft_get_next_piece.c tetridetector.c\
-	library_generator.c tetricmp.c\
+SRC = ft_initlist.c ft_get_next_piece.c ft_tetridetector.c\
+	ft_library_generator.c ft_tetricmp.c\
 	ft_detection_error.c ft_smallest_square.c\
-	ft_piece.c place_piece.c
+	ft_piece.c ft_place_piece.c
 
 OBJET = $(SRC:.c=.o)
 
@@ -25,7 +25,7 @@ HEAD = -I fillit.h
 
 FLAG = -Wall -Wextra -Werror
 
-all : lib $(NAME)
+all : lib $(NAME) comp
 
 $(NAME) : $(OBJET)
 	@ar rc $@ $^
@@ -37,9 +37,9 @@ lib :
 %.o:%.c %.h
 	@clang -o $@ -c $<
 
-comp : all main.c
+comp : main.c
 	@clang $(NAME) ../libft/libft.a main.c -o $(EXE)
-exe : comp
+exe : all comp
 	@./$(EXE) ../Testeurs/42FileChecker/fillit_checker/correct_file/valid_0
 	@./$(EXE) ../Testeurs/42FileChecker/fillit_checker/error_file/error_0
 	@./$(EXE) ../Testeurs/42FileChecker/fillit_checker/correct_file/valid_1

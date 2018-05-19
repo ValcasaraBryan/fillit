@@ -26,14 +26,12 @@ int		main(int argc, char **argv)
 	str = ft_memalloc(BUFF_SIZE + 1);
 	i = 0;
 	if (argc == 2)
-	{
-		ft_putstr("fichier : ");
-		ft_putstr(argv[1]);
-		ft_putstr("\n");
 		id = ft_check_file(argv[1], str);
-	}
 	else
+	{
 		printf("Too Many Arguments\n");
+		return (0);
+	}
 	if (!str)
 		free(str);
 	if (id)
@@ -41,7 +39,7 @@ int		main(int argc, char **argv)
 		index = 1;
 		y = 0;
 		if (!(tab_piece = ft_tab_pieces(id, init_db())))
-			return (NULL);
+			return (0);
 		min_square = min_square_finder(ft_strlen(id));
 		map = create_square(min_square + index);
 		while (tab_piece[y])
@@ -56,7 +54,6 @@ int		main(int argc, char **argv)
 		}
 		printf("%s", map);
 	}
- 	printf("-------------\n");
 	return (0);
 }
 
