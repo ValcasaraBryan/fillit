@@ -14,31 +14,35 @@
 
 int		ft_detection_error(int fd, char *str)
 {
-	if (fd)
-	{
-		while ((read(fd, str, BUFF_SIZE)))
-		{
-			if ((ft_check_char(str) == 0))
-			{
-				close(fd);
-				free(str);
-				ft_putstr("error\n");
-				return (0);
-			}
-		}
-		close(fd);
-		return (1);
-	}
-	else
-	{
-		ft_putstr("--- Error File Descritor ---\n");
+	int len;
+	int lentmp;
+
+	lentmp = 0;
+	if (!fd)
 		return (-1);
+	while ((len = read(fd, str, BUFF_SIZE)))
+	{
+		lentmp = len;
+		if ((ft_check_char(str, len) == 0))
+		{
+			close(fd);
+			free(str);
+			ft_putstr("error\n");
+			return (0);
+		}
 	}
+	close(fd);
+	if (len == 0 && lentmp != 20)
+	{
+		ft_putstr("error\n");
+		return (0);
+	}
+	return (1);
 }
 
 int		ft_send_error(int id_piece, char *id)
 {
-	if (id == NULL || id_piece == (-1))
+	if (id == NULL && id_piece == (-1))
 	{
 		ft_putstr("error\n");
 		return (-1);
@@ -57,6 +61,8 @@ int		ft_compt_new_line(int nb)
 		else if (nb == 12)
 			return (1);
 		else if (nb == 16)
+			return (1);
+		else if (nb == 20)
 			return (1);
 		else
 			return (0);
@@ -93,7 +99,7 @@ char	*ft_check_file(char *argv, char *str)
 	return (NULL);
 }
 
-int		ft_check_char(char *buf)
+int		ft_check_char(char *buf, int len)
 {
 	int	i;
 	int	hashtag_compt;
@@ -110,7 +116,8 @@ int		ft_check_char(char *buf)
 			++hashtag_compt;
 		if (buf[i] == '.')
 			++point_compt;
-		if ((ft_compt_new_line(hashtag_compt + point_compt) == 1) && buf[i] == '\n')
+		if ((ft_compt_new_line(hashtag_compt + point_compt) == 1)
+			&& buf[i] == '\n')
 			++backslash_compt;
 	}
 	if (((i == (hashtag_compt + point_compt + backslash_compt) &&
@@ -118,6 +125,5 @@ int		ft_check_char(char *buf)
 		|| (i == (hashtag_compt + point_compt + backslash_compt) &&
 		hashtag_compt == 4 && backslash_compt == 4 && point_compt == 12)))
 		return (1);
-	else
-		return (0);
+	return (0);
 }

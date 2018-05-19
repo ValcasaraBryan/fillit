@@ -6,26 +6,26 @@
 /*   By: brvalcas <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/18 08:14:02 by brvalcas          #+#    #+#             */
-/*   Updated: 2018/05/18 08:14:03 by brvalcas         ###   ########.fr       */
+/*   Updated: 2018/05/19 23:09:29 by brvalcas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-char		**ft_piece(char *id_piece, t_tetri *list, char **piece)
+char				**ft_piece(char *id_piece, t_tetri *list, char **piece)
 {
-	t_tetri 		*head;
+	t_tetri			*head;
 	int				i;
 	int				j;
 	int				tmp;
 	unsigned int	nb_piece;
 
 	i = 0;
-	nb_piece = ft_strlen(id_piece);
+	nb_piece = ft_strlen(id_piece) + 1;
 	head = list;
 	if (nb_piece && id_piece && list)
 	{
-		while (nb_piece)
+		while (--nb_piece)
 		{
 			j = 1;
 			tmp = id_piece[i];
@@ -33,9 +33,7 @@ char		**ft_piece(char *id_piece, t_tetri *list, char **piece)
 			while (++j <= tmp)
 				list = list->next;
 			if (list->piece)
-				piece[i] = ft_strdup(list->piece);
-			++i;
-			nb_piece--;
+				piece[i++] = ft_strdup(list->piece);
 		}
 		piece[i] = NULL;
 		return (piece);
@@ -43,7 +41,7 @@ char		**ft_piece(char *id_piece, t_tetri *list, char **piece)
 	return (NULL);
 }
 
-char	**ft_tab_pieces(char *id_piece, t_tetri *list)
+char				**ft_tab_pieces(char *id_piece, t_tetri *list)
 {
 	char			**piece;
 	unsigned int	nb_piece;
