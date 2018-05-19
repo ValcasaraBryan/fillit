@@ -26,7 +26,10 @@ int		main(int argc, char **argv)
 	str = ft_memalloc(BUFF_SIZE + 1);
 	i = 0;
 	if (argc == 2)
+	{
+		printf("#@%s\n", argv[1]);
 		id = ft_check_file(argv[1], str);
+	}
 	else
 	{
 		printf("Too Many Arguments\n");
@@ -36,7 +39,7 @@ int		main(int argc, char **argv)
 		free(str);
 	if (id)
 	{
-		index = 1;
+		index = 0;
 		y = 0;
 		if (!(tab_piece = ft_tab_pieces(id, init_db())))
 			return (0);

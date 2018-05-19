@@ -40,54 +40,54 @@ lib :
 comp : main.c
 	@clang $(NAME) ../libft/libft.a main.c -o $(EXE)
 exe : all comp
-	@./$(EXE) ../Testeurs/42FileChecker/fillit_checker/correct_file/valid_0
-	@./$(EXE) ../Testeurs/42FileChecker/fillit_checker/error_file/error_0
+	#@./$(EXE) ../Testeurs/42FileChecker/fillit_checker/correct_file/valid_0
+	#@./$(EXE) ../Testeurs/42FileChecker/fillit_checker/error_file/error_0
 	@./$(EXE) ../Testeurs/42FileChecker/fillit_checker/correct_file/valid_1
-	@./$(EXE) ../Testeurs/42FileChecker/fillit_checker/error_file/error_1
+	#@./$(EXE) ../Testeurs/42FileChecker/fillit_checker/error_file/error_1
 	@./$(EXE) ../Testeurs/42FileChecker/fillit_checker/correct_file/valid_2
-	@./$(EXE) ../Testeurs/42FileChecker/fillit_checker/error_file/error_2
+	#@./$(EXE) ../Testeurs/42FileChecker/fillit_checker/error_file/error_2
 	@./$(EXE) ../Testeurs/42FileChecker/fillit_checker/correct_file/valid_3
-	@./$(EXE) ../Testeurs/42FileChecker/fillit_checker/error_file/error_3
+	#@./$(EXE) ../Testeurs/42FileChecker/fillit_checker/error_file/error_3
 	@./$(EXE) ../Testeurs/42FileChecker/fillit_checker/correct_file/valid_4
-	@./$(EXE) ../Testeurs/42FileChecker/fillit_checker/error_file/error_4
+	#@./$(EXE) ../Testeurs/42FileChecker/fillit_checker/error_file/error_4
 	@./$(EXE) ../Testeurs/42FileChecker/fillit_checker/correct_file/valid_5
-	@./$(EXE) ../Testeurs/42FileChecker/fillit_checker/error_file/error_5
+	#@./$(EXE) ../Testeurs/42FileChecker/fillit_checker/error_file/error_5
 	@./$(EXE) ../Testeurs/42FileChecker/fillit_checker/correct_file/valid_6
-	@./$(EXE) ../Testeurs/42FileChecker/fillit_checker/error_file/error_6
+	#@./$(EXE) ../Testeurs/42FileChecker/fillit_checker/error_file/error_6
 	@./$(EXE) ../Testeurs/42FileChecker/fillit_checker/correct_file/valid_7
-	@./$(EXE) ../Testeurs/42FileChecker/fillit_checker/error_file/error_7
-	@./$(EXE) ../Testeurs/42FileChecker/fillit_checker/correct_file/valid_8
-	@./$(EXE) ../Testeurs/42FileChecker/fillit_checker/error_file/error_8
+	#@./$(EXE) ../Testeurs/42FileChecker/fillit_checker/error_file/error_7
+	#@./$(EXE) ../Testeurs/42FileChecker/fillit_checker/correct_file/valid_8
+	#@./$(EXE) ../Testeurs/42FileChecker/fillit_checker/error_file/error_8
 	@./$(EXE) ../Testeurs/42FileChecker/fillit_checker/correct_file/valid_9
-	@./$(EXE) ../Testeurs/42FileChecker/fillit_checker/error_file/error_9
+	#@./$(EXE) ../Testeurs/42FileChecker/fillit_checker/error_file/error_9
 	@./$(EXE) ../Testeurs/42FileChecker/fillit_checker/correct_file/valid_10
-	@./$(EXE) ../Testeurs/42FileChecker/fillit_checker/error_file/error_10
+	#@./$(EXE) ../Testeurs/42FileChecker/fillit_checker/error_file/error_10
 	@./$(EXE) ../Testeurs/42FileChecker/fillit_checker/correct_file/valid_11
-	@./$(EXE) ../Testeurs/42FileChecker/fillit_checker/error_file/error_11
+	#@./$(EXE) ../Testeurs/42FileChecker/fillit_checker/error_file/error_11
 	@./$(EXE) ../Testeurs/42FileChecker/fillit_checker/correct_file/valid_12
-	@./$(EXE) ../Testeurs/42FileChecker/fillit_checker/error_file/error_12
+	#@./$(EXE) ../Testeurs/42FileChecker/fillit_checker/error_file/error_12
 	@./$(EXE) ../Testeurs/42FileChecker/fillit_checker/correct_file/valid_13
-	@./$(EXE) ../Testeurs/42FileChecker/fillit_checker/error_file/error_13
+	#@./$(EXE) ../Testeurs/42FileChecker/fillit_checker/error_file/error_13
 	@./$(EXE) ../Testeurs/42FileChecker/fillit_checker/correct_file/valid_14
-	@./$(EXE) ../Testeurs/42FileChecker/fillit_checker/error_file/error_14
+	#@./$(EXE) ../Testeurs/42FileChecker/fillit_checker/error_file/error_14
 	@./$(EXE) ../Testeurs/42FileChecker/fillit_checker/correct_file/valid_15
-	@./$(EXE) ../Testeurs/42FileChecker/fillit_checker/error_file/error_15
+	#@./$(EXE) ../Testeurs/42FileChecker/fillit_checker/error_file/error_15
 	@./$(EXE) ../Testeurs/42FileChecker/fillit_checker/correct_file/valid_16
-	@./$(EXE) ../Testeurs/42FileChecker/fillit_checker/error_file/error_16
+	#@./$(EXE) ../Testeurs/42FileChecker/fillit_checker/error_file/error_16
 	@./$(EXE) ../Testeurs/42FileChecker/fillit_checker/correct_file/valid_17
-	@./$(EXE) ../Testeurs/42FileChecker/fillit_checker/error_file/error_17
+	#@./$(EXE) ../Testeurs/42FileChecker/fillit_checker/error_file/error_17
 	@./$(EXE) ../Testeurs/42FileChecker/fillit_checker/correct_file/valid_18
-	@./$(EXE) ../Testeurs/42FileChecker/fillit_checker/error_file/error_18
+	#@./$(EXE) ../Testeurs/42FileChecker/fillit_checker/error_file/error_18
 	@./$(EXE) ../Testeurs/42FileChecker/fillit_checker/correct_file/valid_19
-	@./$(EXE) ../Testeurs/42FileChecker/fillit_checker/error_file/error_19
+	#@./$(EXE) ../Testeurs/42FileChecker/fillit_checker/error_file/error_19
 	@./$(EXE) ../Testeurs/42FileChecker/fillit_checker/correct_file/valid_20
-	@./$(EXE) ../Testeurs/42FileChecker/fillit_checker/error_file/error_20
-	@./$(EXE) ../Testeurs/42FileChecker/fillit_checker/correct_file/valid_21
+	#@./$(EXE) ../Testeurs/42FileChecker/fillit_checker/error_file/error_20
+	#@./$(EXE) ../Testeurs/42FileChecker/fillit_checker/correct_file/valid_21
 	@./$(EXE) ../Testeurs/42FileChecker/fillit_checker/error_file/error_21
-	@./$(EXE) ../Testeurs/42FileChecker/fillit_checker/error_file/error_22
-	@./$(EXE) ../Testeurs/42FileChecker/fillit_checker/error_file/error_23
-	@./$(EXE) ../Testeurs/42FileChecker/fillit_checker/error_file/error_24
-	@./$(EXE) ../Testeurs/42FileChecker/fillit_checker/error_file/error_25
+	#@./$(EXE) ../Testeurs/42FileChecker/fillit_checker/error_file/error_22
+	#@./$(EXE) ../Testeurs/42FileChecker/fillit_checker/error_file/error_23
+	#@./$(EXE) ../Testeurs/42FileChecker/fillit_checker/error_file/error_24
+	#@./$(EXE) ../Testeurs/42FileChecker/fillit_checker/error_file/error_25
 
 debug : main.c
 	cpp main.c
