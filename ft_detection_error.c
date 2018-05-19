@@ -18,7 +18,7 @@ int		ft_detection_error(int fd, char *str)
 	{
 		while ((read(fd, str, BUFF_SIZE)))
 		{
-			if (!(ft_check_char(str, '#', '.', '\n')))
+			if ((ft_check_char(str) == 0))
 			{
 				close(fd);
 				free(str);
@@ -44,6 +44,24 @@ int		ft_send_error(int id_piece, char *id)
 		return (-1);
 	}
 	return (0);
+}
+
+int		ft_compt_new_line(int nb)
+{
+	if (nb)
+	{
+		if (nb == 4)
+			return (1);
+		else if (nb == 8)
+			return (1);
+		else if (nb == 12)
+			return (1);
+		else if (nb == 16)
+			return (1);
+		else
+			return (0);
+	}
+	return (-1);
 }
 
 char	*ft_check_file(char *argv, char *str)
@@ -75,7 +93,7 @@ char	*ft_check_file(char *argv, char *str)
 	return (NULL);
 }
 
-int		ft_check_char(char *buf, char hashtag, char point, char backslash)
+int		ft_check_char(char *buf)
 {
 	int	i;
 	int	hashtag_compt;
@@ -88,11 +106,11 @@ int		ft_check_char(char *buf, char hashtag, char point, char backslash)
 	backslash_compt = 0;
 	while (buf[++i])
 	{
-		if (buf[i] == hashtag)
+		if (buf[i] == '#')
 			++hashtag_compt;
-		if (buf[i] == point)
+		if (buf[i] == '.')
 			++point_compt;
-		if (buf[i] == backslash)
+		if ((ft_compt_new_line(hashtag_compt + point_compt) == 1) && buf[i] == '\n')
 			++backslash_compt;
 	}
 	if (((i == (hashtag_compt + point_compt + backslash_compt) &&

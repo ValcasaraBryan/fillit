@@ -16,100 +16,47 @@ int		main(int argc, char **argv)
 {
 	char	*id;
 	char	*str;
-	char	**piece;
+	char	**tab_piece;
 	char 	*map;
 	int 	i;
+	int		index;
+	int		min_square;
+	int		y;
 
 	str = ft_memalloc(BUFF_SIZE + 1);
 	i = 0;
 	if (argc == 2)
+	{
+		ft_putstr("fichier : ");
+		ft_putstr(argv[1]);
+		ft_putstr("\n");
 		id = ft_check_file(argv[1], str);
+	}
 	else
 		printf("Too Many Arguments\n");
 	if (!str)
 		free(str);
 	if (id)
 	{
-		int nb_piece = ft_strlen(id);
-		int index;
 		index = 1;
-		if (!(map = ft_memalloc((nb_piece * (nb_piece + 1)))))
-			return (0);
-		if (!(piece = (char **)malloc(sizeof(char *) * nb_piece + 1)))
-			return (0);
-														// id = string où chaque case contient le code du tetriminos par rapport a la list
-														// ft_strlen(id) = correspond donc au nombre de pieces
-
-		piece = ft_piece(nb_piece, id, init_db(), piece); // generation des pieces dans un tableau a deux dimension
-		
-		int carre;
-
-		carre = ft_smallest_square((nb_piece + index), map); // generation de la map en fonction du nombre de piece + 1
-
-
-
-///////////////////////////////        essaye de poser chaque # en fonction de la piece
-		int x;
-		int z;
-		int y;
-		char *tmp;
-		x = 0;
-		z = 0;
 		y = 0;
-		index = 0;
-
-		tmp = ft_strdup(map);
-		while (index < 1)
+		if (!(tab_piece = ft_tab_pieces(id, init_db())))
+			return (NULL);
+		min_square = min_square_finder(ft_strlen(id));
+		map = create_square(min_square + index);
+		while (tab_piece[y])
 		{
-			x = 0;
-			y = 0;
-			while (piece[y])
-			{
-				while (piece[y][z])
-				{
-					if (piece[y][z] == '$')
-					{
-						x = x + carre;
-						map[x] = '#';
-					}
-					if (piece[y][z] == '<')
-					{
-						x = x + carre - 1;
-						map[x] = '#';
-					}
-					if (piece[y][z] == '-')
-					{
-						x = x + carre - 2;
-						map[x] = '#';
-					}
-					if (piece[y][z] == '#')
-					{
-						x++;
-						map[x] = '#';
-					}
-					z++;
-				}
-				z = 0;
-				y++;
-			}
-			printf("x = %d\n", x);
-			printf("carre = %d\n", ((carre * carre) + carre));
-			if (index > 2)          ///////////////////////////////////////// back tracking // regeneration de la map avec 1 carre incrémenté
-			{
-				index++;
-				carre = ft_smallest_square((nb_piece + index), tmp); // generation de la map en fonction du nombre de piece + 1
-				map = ft_strdup(tmp);
-			}
-			index++;
-			printf("index = %d\n", index);
+			place_piece(tab_piece[y], y + 65, map, min_square + index);
+			// index++;															// backtracking
+			// carre = ft_smallest_square((nb_piece + index), tmp); 			// backtracking
+			// free(map);														// backtracking
+			// map = ft_strdup(tmp);											// backtracking
+			// free(tmp);														// backtracking
+			y++;
 		}
-
-///////////////////////////////////////
-		while (piece[i])                           // affichage piece
-			printf("piece = [%s]\n", piece[i++]);
-		printf("%s", map);						   // affichage map
-//////////////////////////////////////
+		printf("%s", map);
 	}
- 	printf("\n-------------\n");
+ 	printf("-------------\n");
 	return (0);
 }
+

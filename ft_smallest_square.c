@@ -12,31 +12,53 @@
 
 #include "fillit.h"
 
-int		ft_smallest_square(int nb_piece, char *map)
+char 	*create_square(int size)
 {
-	int x;
-	int y;
-	int z;
+    char *sq;
+    int i;
+    int j;
 
-	x = 0;
-	y = 0;
-	z = nb_piece - 1;
-	if (map && nb_piece)
-	{
-		while (y != nb_piece)
-		{
-			map[x] = '.';
-			x++;
-			if (x == ((nb_piece * nb_piece) - (nb_piece * z) + y))
-			{
-				map[x] = '\n';
-				x++;
-				z--;
-				y++;
-			}
-		}
-		map[x] = '\0';
-		return (nb_piece);
-	}
-	return (0);
+    i = 0;
+    if (!(sq = malloc(sizeof(char) * (size * (size + 1) + 1))))
+        return (NULL);
+    sq[(size * (size + 1))] = '\0';
+    while (i < (size * (size + 1)))
+    {
+        sq[i] = '.';
+        i++;
+    }
+    sq[(size * (size + 1))] = '\0';
+    j = 1;
+    while (j <= size)
+    {
+        sq[(size * j) + (j - 1)] = '\n';
+        j++;
+    }
+    return (sq);
+}
+
+int		min_square_finder(int len)
+{
+    if (len == 1)
+        return (2);
+    if (len == 2)
+          return (3);
+    if ((len == 3) || (len == 4))
+        return (4);
+    if ((len == 5) || (len == 6))
+        return (5);
+    if (len == 7 || len == 8 || len == 9)
+        return (6);
+    if (len == 10 || len == 11 || len == 12)
+        return (7);
+    if (len == 13 || len == 14 || len == 15 || len == 16)
+        return (8);
+    if (len == 17 || len == 18 || len == 19 || len == 20)
+        return (9);
+    if (len == 21 || len == 22 || len == 23 || len == 24 || len == 25)
+        return (10);
+    if (len == 26)
+        return (11);
+    if (len > 26 || len < 1)
+        return (-1);
 }

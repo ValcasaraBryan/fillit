@@ -15,6 +15,7 @@
 
 # include "../libft/libft.h"
 # include <stdio.h>
+# include <stdlib.h>
 # include <sys/types.h>
 # include <sys/stat.h>
 # include <fcntl.h>
@@ -30,7 +31,7 @@ typedef struct	s_tetri
 
 t_tetri		*init_db(void);
 char		*ft_get_next_piece(int fd);
-int			ft_check_char(char *buf, char hashtag, char point, char backslash);
+int			ft_check_char(char *buf);
 void		fill_lst2(t_tetri *tmp);
 void		fill_lst(t_tetri **start, int i);
 void		addlink(t_tetri **start);
@@ -41,7 +42,12 @@ int			tetricmp(char *str, t_tetri *start);
 int			ft_detection_error(int fd, char *str);
 int			ft_send_error(int id_piece, char *id);
 char		*ft_check_file(char *argv, char *str);
-int			ft_smallest_square(int nb_piece, char *map);
-char		**ft_piece(unsigned int nb_piece, char *id_piece, t_tetri *list, char **piece);
+char		**ft_piece(char *id_piece, t_tetri *list, char **piece);
+char		*place_piece(char *piece, char c, char *sq, int sqsize);
+char		*erase_piece(char *sq, char c);
+int			min_square_finder(int len);
+char 		*create_square(int size);
+char		**ft_tab_pieces(char *id_piece, t_tetri *list);
+int			ft_compt_new_line(int nb);
 
 #endif

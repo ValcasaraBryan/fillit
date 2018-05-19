@@ -12,31 +12,52 @@
 
 #include "fillit.h"
 
-char		**ft_piece(unsigned int nb_piece, char *id_piece, t_tetri *list,
-	char **piece)
+char		**ft_piece(char *id_piece, t_tetri *list, char **piece)
 {
-	t_tetri *head;
-	int		i;
-	int		j;
-	int		tmp;
+	t_tetri 		*head;
+	int				i;
+	int				j;
+	int				tmp;
+	unsigned int	nb_piece;
 
 	i = 0;
+	nb_piece = ft_strlen(id_piece);
 	head = list;
 	if (nb_piece && id_piece && list)
 	{
-		piece[nb_piece + 1] = 0;
 		while (nb_piece)
 		{
-			j = 0;
+			j = 1;
 			tmp = id_piece[i];
 			list = head;
 			while (++j <= tmp)
 				list = list->next;
-			piece[i] = ft_strdup(list->piece);
+			if (list->piece)
+				piece[i] = ft_strdup(list->piece);
 			++i;
 			nb_piece--;
 		}
+		piece[i] = NULL;
 		return (piece);
+	}
+	return (NULL);
+}
+
+char	**ft_tab_pieces(char *id_piece, t_tetri *list)
+{
+	char			**piece;
+	unsigned int	nb_piece;
+
+	if (id_piece)
+	{
+		nb_piece = ft_strlen(id_piece);
+		if (!(piece = (char **)malloc(sizeof(char *) * nb_piece + 1)))
+			return (NULL);
+		piece[nb_piece + 1] = 0;
+		if (!(piece = ft_piece(id_piece, list, piece)))
+			return (NULL);
+		else
+			return (piece);
 	}
 	return (NULL);
 }

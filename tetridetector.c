@@ -18,7 +18,7 @@ char	*subdetector(char *str, int i, int k, char *pc)
 {
 	int j;
 
-	while (str[i] != '\0')
+	while (str[i])
 	{
 		j = 0;
 		while (str[i + j] != '#' && str[i + j] != '\0')
@@ -60,11 +60,12 @@ char	*tetridetector(char *str)
 	i = 0;
 	j = 0;
 	k = 0;
-	while (str[i] != '#')
+	while (str[i] != '#' && str[i] != '\0')
 		i++;
 	pc[k] = '#';
 	k++;
 	i++;
-	pc = subdetector(str, i, k, pc);
+	if (str[i])
+		pc = subdetector(str, i, k, pc);
 	return (pc);
 }

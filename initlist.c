@@ -39,6 +39,7 @@ void		fill_lst2(t_tetri *tmp)
 	tmp->piece = "##<#$#"; // 18
 	tmp = tmp->next;
 	tmp->piece = "#$###"; // 19
+	tmp->next = NULL;
 }
 
 void		fill_lst(t_tetri **start, int i)
