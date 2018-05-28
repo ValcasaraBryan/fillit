@@ -6,14 +6,14 @@
 /*   By: adstuder <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/13 21:55:00 by adstuder          #+#    #+#             */
-/*   Updated: 2018/05/15 20:40:07 by adstuder         ###   ########.fr       */
+/*   Updated: 2018/05/25 22:20:21 by adstuder         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FILLIT_H
 # define FILLIT_H
 
-# include "../libft/libft.h"
+# include "libft.h"
 # include <stdio.h>
 # include <stdlib.h>
 # include <sys/types.h>
@@ -30,8 +30,8 @@ typedef struct		s_tetri
 }					t_tetri;
 
 t_tetri				*init_db(void);
-char				*ft_get_next_piece(int fd);
-int					ft_check_char(char *buf, int len);
+char				*get_next_piece(int fd);
+int					check_char(char *buf, int ret);
 void				fill_lst2(t_tetri *tmp);
 void				fill_lst(t_tetri **start, int i);
 void				addlink(t_tetri **start);
@@ -39,15 +39,14 @@ char				*tetridetector(char *str);
 char				*subdetector(char *str, int i, int k, char *pc);
 char				*library_generator(int id, char *str);
 int					tetricmp(char *str, t_tetri *start);
-int					ft_detection_error(int fd, char *str);
-int					ft_send_error(int id_piece, char *id);
-char				*ft_check_file(char *argv, char *str);
-char				**ft_piece(char *id_piece, t_tetri *list, char **piece);
-char				*place_piece(char *piece, char c, char *sq, int sqsize);
+int					detection_error(int fd, char *str);
+char				*check_file(char *argv, char *str);
+char				**piece(char *id_piece, t_tetri *list, char **piece);
+char				*place_piece(char *piece, char c, char *sq, int start);
 char				*erase_piece(char *sq, char c);
 int					min_square_finder(int len);
 char				*create_square(int size);
-char				**ft_tab_pieces(char *id_piece, t_tetri *list);
-int					ft_compt_new_line(int nb);
-
+char				**tab_lib_creator(char *id_piece, t_tetri *list);
+int					get_square_size(char *sq);
+char				*tetrisolver(char *sq, char c, int start, char **tab_pieces);
 #endif

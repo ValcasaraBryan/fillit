@@ -6,13 +6,13 @@
 /*   By: brvalcas <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/18 08:14:02 by brvalcas          #+#    #+#             */
-/*   Updated: 2018/05/19 23:09:29 by brvalcas         ###   ########.fr       */
+/*   Updated: 2018/05/24 23:43:31 by adstuder         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-char				**ft_piece(char *id_piece, t_tetri *list, char **piece)
+char				**add_piece(char *id_piece, t_tetri *list, char **piece)
 {
 	t_tetri			*head;
 	int				i;
@@ -41,7 +41,7 @@ char				**ft_piece(char *id_piece, t_tetri *list, char **piece)
 	return (NULL);
 }
 
-char				**ft_tab_pieces(char *id_piece, t_tetri *list)
+char				**tab_lib_creator(char *id_piece, t_tetri *list)
 {
 	char			**piece;
 	unsigned int	nb_piece;
@@ -52,7 +52,7 @@ char				**ft_tab_pieces(char *id_piece, t_tetri *list)
 		if (!(piece = (char **)malloc(sizeof(char *) * nb_piece + 1)))
 			return (NULL);
 		piece[nb_piece + 1] = 0;
-		if (!(piece = ft_piece(id_piece, list, piece)))
+		if (!(piece = add_piece(id_piece, list, piece)))
 			return (NULL);
 		else
 			return (piece);

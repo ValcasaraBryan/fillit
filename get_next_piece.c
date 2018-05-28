@@ -6,31 +6,25 @@
 /*   By: brvalcas <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/15 22:59:13 by brvalcas          #+#    #+#             */
-/*   Updated: 2018/05/15 22:59:14 by brvalcas         ###   ########.fr       */
+/*   Updated: 2018/05/24 22:14:31 by adstuder         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-char	*ft_get_next_piece(int fd)
+char	*get_next_piece(int fd)
 {
-	char		*buf;
-	char		*tmp;
-	int			ret;
+	char 	buf[BUFF_SIZE + 1];
+	char 	*piece;
+	int		ret;
 
-	ret = 0;
-	if ((!(buf = ft_memalloc(BUFF_SIZE + 1))
-		|| (!(ret = read(fd, buf, BUFF_SIZE)))))
+	ret = read(fd, buf, BUFF_SIZE);
+	if (ret == 0)
 		return (NULL);
-	if (buf)
+	buf[ret] = '\0';
+	if (ret == 21)
 	{
-		if (ret == 21)
-		{
-			tmp = ft_strndup(buf, 20);
-			free(buf);
-			return (tmp);
-		}
+		buf[20] = '\0';
 	}
-	free(tmp);
-	return (buf);
+	return (ft_strdup(buf));
 }
