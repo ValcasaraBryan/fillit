@@ -6,7 +6,7 @@
 /*   By: brvalcas <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/15 22:59:13 by brvalcas          #+#    #+#             */
-/*   Updated: 2018/05/24 22:14:31 by adstuder         ###   ########.fr       */
+/*   Updated: 2018/05/29 02:10:27 by brvalcas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 char	*get_next_piece(int fd)
 {
-	char 	buf[BUFF_SIZE + 1];
-	char 	*piece;
+	char	buf[BUFF_SIZE + 1];
+	char	*piece;
 	int		ret;
 
 	ret = read(fd, buf, BUFF_SIZE);

@@ -6,7 +6,7 @@
 /*   By: brvalcas <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/18 21:47:33 by brvalcas          #+#    #+#             */
-/*   Updated: 2018/05/25 22:29:29 by adstuder         ###   ########.fr       */
+/*   Updated: 2018/05/29 02:14:10 by brvalcas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,9 @@ char		*erase_piece(char *sq, char c)
 	return (sq);
 }
 
-int		get_square_size(char *sq)
+int			get_square_size(char *sq)
 {
-	int i;
+	int		i;
 
 	i = 0;
 	while (sq[i] != '\n' && sq[i] != '\0')
@@ -36,11 +36,11 @@ int		get_square_size(char *sq)
 	return (i);
 }
 
-char *place_piece(char *piece, char c, char *sq, int start)
+char		*place_piece(char *piece, char c, char *sq, int start)
 {
-	int i;
-	int j;
-	int sqsize;
+	int		i;
+	int		j;
+	int		sqsize;
 
 	i = 0;
 	j = 0;

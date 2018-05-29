@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_detection_error.c                               :+:      :+:    :+:   */
+/*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: brvalcas <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/05/16 23:41:14 by brvalcas          #+#    #+#             */
-/*   Updated: 2018/05/24 23:18:32 by adstuder         ###   ########.fr       */
+/*   Created: 2018/05/29 02:16:59 by brvalcas          #+#    #+#             */
+/*   Updated: 2018/05/29 02:17:07 by brvalcas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,9 @@ int		check_char(char *buf, int ret)
 			newline_compt++;
 		i++;
 	}
-	if (ret == 21 && (hashtag_compt != 4 || point_compt != 12 ||
-				newline_compt != 5))
-		return (-1);
-	if (ret == 20 && (hashtag_compt != 4 || point_compt != 12 ||
-				newline_compt != 4))
+	if ((ret == 21 && (hashtag_compt != 4 || point_compt != 12 ||
+		newline_compt != 5)) || (ret == 20 && (hashtag_compt != 4
+		|| point_compt != 12 || newline_compt != 4)))
 		return (-1);
 	return (1);
 }
@@ -48,8 +46,6 @@ int		check_pieces(int fd, char *buf)
 	int rettmp;
 
 	rettmp = 0;
-
-
 	if (fd < 0)
 		return (-1);
 	while ((ret = read(fd, buf, BUFF_SIZE)))
