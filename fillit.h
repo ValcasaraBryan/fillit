@@ -49,4 +49,5 @@ char				*create_square(int size);
 char				**tab_lib_creator(char *id_piece, t_tetri *list);
 int					get_square_size(char *sq);
 char				*tetrisolver(char *sq, char c, int start, char **tab_pieces);
+int					get_start(char *sq, char c);
 #endif

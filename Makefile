@@ -41,7 +41,7 @@ lib :
 comp : main.c
 	@clang $(NAME) ../libft/libft.a main.c -o $(EXE)
 exe : all comp
-		./$(EXE) ../Testeurs/42FileChecker/fillit_checker/correct_file/valid_0
+		time ./$(EXE) ../Testeurs/42FileChecker/fillit_checker/correct_file/valid_0
 	#./$(EXE) ../../../Testeurs/42FileChecker/fillit_checker/error_file/error_0
 	#./$(EXE) ../../../Testeurs/42FileChecker/fillit_checker/correct_file/valid_1
 	#./$(EXE) ../../../Testeurs/42FileChecker/fillit_checker/error_file/error_1
@@ -55,15 +55,15 @@ exe : all comp
 	#./$(EXE) ../../../Testeurs/42FileChecker/fillit_checker/error_file/error_5
 	#./$(EXE) ../../../Testeurs/42FileChecker/fillit_checker/correct_file/valid_6
 	#./$(EXE) ../../../Testeurs/42FileChecker/fillit_checker/error_file/error_6
-		./$(EXE) ../Testeurs/42FileChecker/fillit_checker/correct_file/valid_7
+			time ./$(EXE) ../Testeurs/42FileChecker/fillit_checker/correct_file/valid_7
 	#./$(EXE) ../../../Testeurs/42FileChecker/fillit_checker/error_file/error_7
 	#./$(EXE) ../../../Testeurs/42FileChecker/fillit_checker/correct_file/valid_8
 	#./$(EXE) ../../../Testeurs/42FileChecker/fillit_checker/error_file/error_8
-		./$(EXE) ../Testeurs/42FileChecker/fillit_checker/correct_file/valid_9
+		#./$(EXE) ../Testeurs/42FileChecker/fillit_checker/correct_file/valid_9
 	#./$(EXE) ../../../Testeurs/42FileChecker/fillit_checker/error_file/error_9
 	#./$(EXE) ../../../Testeurs/42FileChecker/fillit_checker/correct_file/valid_10
 	#./$(EXE) ../../../Testeurs/42FileChecker/fillit_checker/error_file/error_10
-		./$(EXE) ../Testeurs/42FileChecker/fillit_checker/correct_file/valid_11
+		time ./$(EXE) ../Testeurs/42FileChecker/fillit_checker/correct_file/valid_11
 	#./$(EXE) ../../../Testeurs/42FileChecker/fillit_checker/error_file/error_11
 	#./$(EXE) ../../../Testeurs/42FileChecker/fillit_checker/correct_file/valid_12
 	#./$(EXE) ../../../Testeurs/42FileChecker/fillit_checker/error_file/error_12
@@ -79,7 +79,7 @@ exe : all comp
 	#./$(EXE) ../../../Testeurs/42FileChecker/fillit_checker/error_file/error_17
 	#./$(EXE) ../../../Testeurs/42FileChecker/fillit_checker/correct_file/valid_18
 	#./$(EXE) ../../../Testeurs/42FileChecker/fillit_checker/error_file/error_18
-		./$(EXE) ../Testeurs/42FileChecker/fillit_checker/correct_file/valid_19
+		time ./$(EXE) ../Testeurs/42FileChecker/fillit_checker/correct_file/valid_19
 	#./$(EXE) ../../../Testeurs/42FileChecker/fillit_checker/error_file/error_19
 	#./$(EXE) ../../../Testeurs/42FileChecker/fillit_checker/correct_file/valid_20
 	#./$(EXE) ../../../Testeurs/42FileChecker/fillit_checker/error_file/error_20
@@ -89,7 +89,7 @@ exe : all comp
 	#./$(EXE) ../../../Testeurs/42FileChecker/fillit_checker/error_file/error_23
 	#./$(EXE) ../../../Testeurs/42FileChecker/fillit_checker/error_file/error_24
 	#./$(EXE) ../../../Testeurs/42FileChecker/fillit_checker/error_file/error_25
-	#time ./$(EXE) ../fillit_def/testeur
+	time ./$(EXE) testeur
 debug : main.c
 	cpp main.c
 

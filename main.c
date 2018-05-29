@@ -12,32 +12,26 @@
 
 #include "fillit.h"
 
-int		main(int argc, char **argv)
+int        main(int argc, char **argv)
 {
-	char	buf[BUFF_SIZE + 1];
-	char	*lib;
-	char	**tab_pieces;
-	char 	*sq;
-	char	c;
-	int i;
-	int start;
-	t_tetri *db;
+    char    buf[BUFF_SIZE + 1];
+    char    *lib;
+    char    **tab_pieces;
+    char     *sq;
+    t_tetri *db;
 
-	db = init_db();
-	if (argc != 2)
-	{
-		ft_putstr("Invalid Number Of Arguments\n");
-		return (0);
-	}
-	if (!(lib = check_file(argv[1], buf)))
-		return (0);
-	sq = create_square(min_square_finder(ft_strlen(lib)));
-	tab_pieces = tab_lib_creator(lib, db);
-	i = 0;
-	start = 1;
-	char *sq_tmp = NULL;
-	int sq_size;
+    db = init_db();
+    if (argc != 2)
+    {
+        ft_putstr("error\n");
+        return (0);
+    }
+    if (!(lib = check_file(argv[1], buf)))
+        return (0);
+    sq = create_square(min_square_finder(ft_strlen(lib)));
+    tab_pieces = tab_lib_creator(lib, db);
 	sq = tetrisolver(sq, 0, 0, tab_pieces);
-	printf("%s\n", sq);
-	return (0);
+	ft_putstr(sq);
+    ft_putchar('\n');
+    return (0);
 }

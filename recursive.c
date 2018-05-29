@@ -30,28 +30,30 @@ char	*tetrisolver(char *sq, char c, int start, char **tab_pieces)
 	int sqsize;
 
 	sqsize = get_square_size(sq);
-	if (start > ((sqsize * (sqsize + 1)) - 2))
-	{
-		if (c == 0)
+    while (tab_pieces[c] != NULL)
+    {
+    	if (start > ((sqsize * (sqsize + 1)) - 2))
+    	{
+			if (c == 0)
+			{
+				start = 0;
+				sqsize++;
+				sq = create_square(sqsize);
+			}
+			else
+			{
+				c--;
+				start = get_start(sq, c) + 1;
+				erase_piece(sq, c);
+			}
+    	}
+    	if ((sqtmp = place_piece(tab_pieces[c], c, sq, start)))
 		{
-			start = 0;
-			sqsize++;
-			sq = create_square(sqsize);
+			sq = sqtmp;
+			start = -1;
+			c++;
 		}
-		else
-		{
-			c--;
-			start = get_start(sq, c) + 1;
-			erase_piece(sq, c);
-		}
+		start++;
 	}
-	if (tab_pieces[c] == 0)
-		return (sq);
-	if ((sqtmp = place_piece(tab_pieces[c], c, sq, start)))
-	{
-		sq = sqtmp;
-		if ((sqtmp = tetrisolver(sq, c + 1, 0, tab_pieces)))
-			return (sqtmp);
-	}
-	return (tetrisolver(sq, c, start + 1, tab_pieces));
+	return (sq);
 }
