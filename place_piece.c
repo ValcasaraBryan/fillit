@@ -6,7 +6,7 @@
 /*   By: brvalcas <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/18 21:47:33 by brvalcas          #+#    #+#             */
-/*   Updated: 2018/05/29 02:14:10 by brvalcas         ###   ########.fr       */
+/*   Updated: 2018/05/30 16:43:29 by adstuder         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,16 +36,37 @@ int			get_square_size(char *sq)
 	return (i);
 }
 
+char		*sub_place_piece(int start, int sqsize, char *sq, char c)
+{
+	if (start <= ((sqsize * (sqsize + 1)) - 2))
+	{
+		if (sq[start] == '.')
+			sq[start] = c + 65;
+		else
+		{
+			erase_piece(sq, c);
+			return (NULL);
+		}
+	}
+	else
+	{
+		erase_piece(sq, c);
+		return (NULL);
+	}
+	return (sq);
+}
+
 char		*place_piece(char *piece, char c, char *sq, int start)
 {
 	int		i;
 	int		j;
 	int		sqsize;
+	char	*sqtmp;
 
 	i = 0;
-	j = 0;
+	j = -1;
 	sqsize = get_square_size(sq);
-	while (piece[j] != '\0')
+	while (piece[++j] != '\0')
 	{
 		if (piece[j] == '$')
 			i = i + sqsize - 1;
@@ -55,26 +76,11 @@ char		*place_piece(char *piece, char c, char *sq, int start)
 			i = i + sqsize - 3;
 		if (piece[j] == '#')
 		{
-			if (start + i <= ((sqsize * (sqsize + 1)) - 2))
-			{
-				if (sq[start + i] == '.')
-				{
-					sq[start + i] = c + 65;
-				}
-				else
-				{
-					erase_piece(sq, c);
-					return (NULL);
-				}
-			}
-			else
-			{
-				erase_piece(sq, c);
+			if (!(sqtmp = sub_place_piece(start + i, sqsize, sq, c)))
 				return (NULL);
-			}
+			sq = sqtmp;
 		}
 		i++;
-		j++;
 	}
 	return (sq);
 }

@@ -6,7 +6,7 @@
 /*   By: brvalcas <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/29 02:16:59 by brvalcas          #+#    #+#             */
-/*   Updated: 2018/05/29 02:17:07 by brvalcas         ###   ########.fr       */
+/*   Updated: 2018/05/30 17:37:42 by adstuder         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,12 @@ int		check_pieces(int fd, char *buf)
 	return (1);
 }
 
+char	*print_error(void)
+{
+	ft_putstr("error\n");
+	return (NULL);
+}
+
 char	*check_file(char *argv, char *buf)
 {
 	char	*lib;
@@ -72,10 +78,7 @@ char	*check_file(char *argv, char *buf)
 	lib = ft_strdup("");
 	fd = open(argv, O_RDONLY);
 	if (check_pieces(fd, buf) == -1)
-	{
-		ft_putstr("error\n");
-		return (NULL);
-	}
+		return (print_error());
 	close(fd);
 	fd = open(argv, O_RDONLY);
 	while ((buf = get_next_piece(fd)))
@@ -83,10 +86,7 @@ char	*check_file(char *argv, char *buf)
 		piece_str = tetridetector(buf);
 		id_piece = tetricmp(piece_str, start);
 		if (id_piece == -1)
-		{
-			ft_putstr("error\n");
-			return (NULL);
-		}
+			return (print_error());
 		free(piece_str);
 		lib = library_generator(id_piece, lib);
 	}

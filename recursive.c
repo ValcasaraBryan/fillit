@@ -6,7 +6,7 @@
 /*   By: adstuder <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/25 19:59:59 by adstuder          #+#    #+#             */
-/*   Updated: 2018/05/29 02:16:03 by brvalcas         ###   ########.fr       */
+/*   Updated: 2018/05/30 17:33:36 by adstuder         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,24 +28,16 @@ char		*tetrisolver(char *sq, char c, int start, char **tab_pieces)
 	int		sqsize;
 
 	sqsize = get_square_size(sq);
-	while (tab_pieces[c] != NULL)
+	while (tab_pieces[(int)c] != NULL)
 	{
 		if (start > ((sqsize * (sqsize + 1)) - 2))
 		{
-			if (c == 0)
-			{
-				start = 0;
-				sqsize++;
-				sq = create_square(sqsize);
-			}
-			else
-			{
-				c--;
-				start = get_start(sq, c) + 1;
-				erase_piece(sq, c);
-			}
+			start = c == 0 ? 0 : get_start(sq, c - 1) + 1;
+			sqsize = c == 0 ? sqsize + 1 : sqsize;
+			sq = c == 0 ? create_square(sqsize) : erase_piece(sq, c - 1);
+			c = (c == 0) ? c : c - 1;
 		}
-		if ((sqtmp = place_piece(tab_pieces[c], c, sq, start)))
+		if ((sqtmp = place_piece(tab_pieces[(int)c], c, sq, start)))
 		{
 			sq = sqtmp;
 			start = -1;
