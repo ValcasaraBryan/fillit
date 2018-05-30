@@ -6,7 +6,7 @@
 /*   By: adstuder <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/13 21:55:00 by adstuder          #+#    #+#             */
-/*   Updated: 2018/05/25 22:20:21 by adstuder         ###   ########.fr       */
+/*   Updated: 2018/05/30 17:39:40 by adstuder         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,5 +56,6 @@ void				ft_putstr(char const *s);
 int					ft_strcmp(const char *s1, const char *s2);
 char				*ft_strdup(const char *s1);
 size_t				ft_strlen(const char *s);
+char				*print_error(void);
 
 #endif
