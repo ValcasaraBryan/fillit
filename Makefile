@@ -33,7 +33,7 @@ all : $(NAME)
 $(NAME) : $(OBJET)
 	@ar rc $(LIB) $^
 	@ranlib $(LIB)
-	@clang $(LIB) -o $(NAME)
+	@clang $(FLAG) $(LIB) -o $(NAME)
 
 exe : $(NAME)
 	time ./$(NAME) testeur
