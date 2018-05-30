@@ -6,7 +6,7 @@
 /*   By: brvalcas <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/15 18:27:03 by brvalcas          #+#    #+#             */
-/*   Updated: 2018/05/29 02:13:36 by brvalcas         ###   ########.fr       */
+/*   Updated: 2018/05/30 18:37:17 by brvalcas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,5 @@ int			main(int argc, char **argv)
 	tab_pieces = tab_lib_creator(lib, db);
 	sq = tetrisolver(sq, 0, 0, tab_pieces);
 	ft_putstr(sq);
-	ft_putchar('\n');
 	return (0);
 }
