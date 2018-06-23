@@ -19,6 +19,8 @@ char		*create_square(int size)
 	int		j;
 
 	i = 0;
+	if (size == -1)
+		return (NULL);
 	if (!(sq = malloc(sizeof(char) * (size * (size + 1) + 1))))
 		return (NULL);
 	sq[(size * (size + 1))] = '\0';

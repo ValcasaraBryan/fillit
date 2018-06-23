@@ -29,6 +29,11 @@ int			main(int argc, char **argv)
 	if (!(lib = check_file(argv[1], buf)))
 		return (0);
 	sq = create_square(min_square_finder(ft_strlen(lib)));
+	if (sq == NULL)
+	{
+		print_error();
+		return (0);
+	}
 	tab_pieces = tab_lib_creator(lib, db);
 	sq = tetrisolver(sq, 0, 0, tab_pieces);
 	ft_putstr(sq);

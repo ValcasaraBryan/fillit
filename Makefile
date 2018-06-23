@@ -36,7 +36,7 @@ $(NAME) : $(OBJET)
 	@clang $(FLAG) $(LIB) -o $(NAME)
 
 exe : $(NAME)
-	time ./$(NAME) testeur
+	time ./$(NAME) test
 
 clean :
 	@rm -f $(OBJET)
