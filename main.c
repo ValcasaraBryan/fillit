@@ -23,7 +23,7 @@ int			main(int argc, char **argv)
 	db = init_db();
 	if (argc != 2)
 	{
-		ft_putstr("usage : fillit [file]\n");
+		ft_putstr("usage: fillit [file]\n");
 		return (0);
 	}
 	if (!(lib = check_file(argv[1], buf)))
