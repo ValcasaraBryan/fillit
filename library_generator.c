@@ -19,15 +19,12 @@ char	*library_generator(int id, char *str)
 	int		i;
 
 	sz = str ? ft_strlen(str) : 0;
-	i = 0;
+	i = -1;
 	if (!(lib = malloc(sizeof(char) * sz + 2)))
 		return (NULL);
 	lib[sz + 1] = '\0';
-	while (i < sz)
-	{
+	while (++i < sz)
 		lib[i] = str[i];
-		i++;
-	}
 	lib[i] = id;
 	free(str);
 	return (lib);
