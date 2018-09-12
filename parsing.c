@@ -60,33 +60,31 @@ int		check_pieces(int fd, char *buf)
 	return (1);
 }
 
-char	*print_error(void)
+char	*print_error_str(void)
 {
 	ft_putstr("error\n");
 	return (NULL);
 }
 
-char	*check_file(char *argv, char *buf)
+char	*check_file(char *argv, char *buf, t_tetri *db)
 {
 	char	*lib;
 	char	*piece_str;
 	int		id_piece;
 	int		fd;
-	t_tetri	*start;
 
-	start = init_db();
-	lib = ft_strdup("");
+	lib = NULL;
 	fd = open(argv, O_RDONLY);
 	if (check_pieces(fd, buf) == -1)
-		return (print_error());
+		return (print_error_str());
 	close(fd);
 	fd = open(argv, O_RDONLY);
 	while ((buf = get_next_piece(fd)))
 	{
 		piece_str = tetridetector(buf);
-		id_piece = tetricmp(piece_str, start);
+		id_piece = tetricmp(piece_str, db);
 		if (id_piece == -1)
-			return (print_error());
+			return (print_error_str());
 		free(piece_str);
 		lib = library_generator(id_piece, lib);
 	}

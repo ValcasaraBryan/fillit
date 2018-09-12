@@ -18,7 +18,7 @@ char	*library_generator(int id, char *str)
 	int		sz;
 	int		i;
 
-	sz = ft_strlen(str);
+	sz = str ? ft_strlen(str) : 0;
 	i = 0;
 	if (!(lib = malloc(sizeof(char) * sz + 2)))
 		return (NULL);

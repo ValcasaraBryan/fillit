@@ -20,6 +20,8 @@
 # include <fcntl.h>
 # include <unistd.h>
 # define BUFF_SIZE 21
+# define ERROR     1
+# define USAGE     2
 
 typedef struct		s_tetri
 {
@@ -40,7 +42,7 @@ char				*subdetector(char *str, int i, int k, char *pc);
 char				*library_generator(int id, char *str);
 int					tetricmp(char *str, t_tetri *start);
 int					detection_error(int fd, char *str);
-char				*check_file(char *argv, char *str);
+char				*check_file(char *argv, char *str, t_tetri *db);
 char				**piece(char *id_piece, t_tetri *list, char **piece);
 char				*place_piece(char *piece, char c, char *sq, int start);
 char				*erase_piece(char *sq, char c);
@@ -56,6 +58,7 @@ void				ft_putstr(char const *s);
 int					ft_strcmp(const char *s1, const char *s2);
 char				*ft_strdup(const char *s1);
 size_t				ft_strlen(const char *s);
-char				*print_error(void);
+char				*print_error_str(void);
+int					print_error(int i);
 
 #endif
