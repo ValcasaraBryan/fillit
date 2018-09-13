@@ -28,7 +28,7 @@ int			main(int argc, char **argv)
 	char	**tab_pieces;
 	char	*sq;
 	t_tetri	*db;
-	
+
 	db = init_db();
 	sq = NULL;
 	lib = NULL;
@@ -36,7 +36,7 @@ int			main(int argc, char **argv)
 		return (print_error(USAGE));
 	if (!(lib = check_file(argv[1], buf, db)))
 		return (print_error(0));
-	if (lib)	
+	if (lib)
 		sq = create_square(min_square_finder(ft_strlen(lib)));
 	if (sq == NULL)
 		return (print_error(ERROR));

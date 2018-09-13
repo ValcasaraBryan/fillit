@@ -14,6 +14,18 @@
 #include <stdio.h>
 #include "fillit.h"
 
+int		check_newline(char *str, int ret)
+{
+	int i;
+
+	i = -1;
+	while (++i < ret)
+		if (i == 4 || i == 9 || i == 14 || i == 19 || i == 20)
+			if (str[i] != '\n')
+				return (-1);
+	return (1);
+}
+
 char	*subdetector(char *str, int i, int k, char *pc)
 {
 	int j;

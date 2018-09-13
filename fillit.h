@@ -60,5 +60,6 @@ char				*ft_strdup(const char *s1);
 size_t				ft_strlen(const char *s);
 char				*print_error_str(void);
 int					print_error(int i);
+int					check_newline(char *str, int ret);
 
 #endif

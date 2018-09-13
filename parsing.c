@@ -52,7 +52,7 @@ int		check_pieces(int fd, char *buf)
 	{
 		buf[ret] = '\0';
 		rettmp = ret;
-		if (check_char(buf, ret) == -1)
+		if ((check_char(buf, ret) == -1) || (check_newline(buf, ret) == -1))
 			return (-1);
 	}
 	if (ret == 0 && rettmp != 20)
