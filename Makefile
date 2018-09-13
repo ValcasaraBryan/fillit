@@ -40,6 +40,11 @@ $(NAME) : $(OBJET)
 exe : $(NAME)
 	time ./$(NAME) test
 
+norm :
+	clear
+	#------- only [*.c] and [*.h] -------#
+	@norminette *.c *.h
+
 clean :
 	@rm -f $(OBJET)
 
