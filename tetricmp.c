@@ -18,7 +18,7 @@ int		tetricmp(char *str, t_tetri *start)
 
 	tmp = start;
 	if (tmp && str)
-		while (tmp)
+		while (tmp->piece)
 		{
 			if (ft_strcmp(str, tmp->piece) == 0)
 				return (tmp->id);
