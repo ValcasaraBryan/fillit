@@ -25,15 +25,17 @@ HEAD = -I fillit.h
 
 FLAG = -Wall -Wextra -Werror
 
+DEBUG = -fsanitize=address
+
 all : $(NAME)
 
 %.o:%.c %.h
-	@clang $(FLAG) -o $@ -c $<
+	@gcc $(FLAG) -o $@ -c $<
 
 $(NAME) : $(OBJET)
 	@ar rc $(LIB) $^
 	@ranlib $(LIB)
-	@clang $(FLAG) $(LIB) -o $(NAME)
+	@gcc $(FLAG) $(LIB) -o $(NAME)
 
 exe : $(NAME)
 	time ./$(NAME) test
