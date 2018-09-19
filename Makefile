@@ -14,14 +14,15 @@ NAME = fillit
 
 LIB = fillit.a
 
-SRC = ft_putchar.c ft_putstr.c ft_strcmp.c ft_strdup.c\
-	ft_strlen.c get_next_piece.c library_generator.c parsing.c\
-	smallest_square.c tab_creator.c tetricmp.c tetridetector.c\
-	database_creation.c recursive.c place_piece.c main.c
+SRC = srcs/ft_putchar.c srcs/ft_putstr.c srcs/ft_strcmp.c srcs/ft_strdup.c\
+	srcs/ft_strlen.c srcs/get_next_piece.c srcs/library_generator.c\
+	srcs/parsing.c srcs/smallest_square.c srcs/tab_creator.c srcs/tetricmp.c\
+	srcs/etridetector.c srcs/database_creation.c srcs/recursive.c\
+	srcs/place_piece.c srcs/main.c
 
 OBJET = $(SRC:.c=.o)
 
-HEAD = -I fillit.h
+HEAD = -I includes/fillit.h
 
 FLAG = -Wall -Wextra -Werror
 

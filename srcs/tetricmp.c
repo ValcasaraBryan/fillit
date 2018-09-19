@@ -1,23 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   tetricmp.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adstuder <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/04/13 17:28:30 by adstuder          #+#    #+#             */
-/*   Updated: 2018/04/23 23:28:56 by adstuder         ###   ########.fr       */
+/*   Created: 2018/05/16 20:19:07 by adstuder          #+#    #+#             */
+/*   Updated: 2018/05/16 22:26:53 by adstuder         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fillit.h"
+#include "../includes/fillit.h"
 
-size_t		ft_strlen(const char *s)
+int		tetricmp(char *str, t_tetri *start)
 {
-	size_t i;
+	t_tetri	*tmp;
 
-	i = 0;
-	while (s[i] != '\0')
-		i++;
-	return (i);
+	tmp = start;
+	if (tmp && str)
+		while (tmp->piece)
+		{
+			if (ft_strcmp(str, tmp->piece) == 0)
+				return (tmp->id);
+			tmp = tmp->next;
+		}
+	return (-1);
 }

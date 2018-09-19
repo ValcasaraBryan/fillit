@@ -10,9 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include <stdio.h>
-#include "fillit.h"
+#include "../includes/fillit.h"
 
 int		check_newline(char *str, int ret)
 {

@@ -1,27 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcmp.c                                        :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adstuder <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/04/13 19:14:35 by adstuder          #+#    #+#             */
-/*   Updated: 2018/04/24 23:41:49 by adstuder         ###   ########.fr       */
+/*   Created: 2018/04/13 17:28:30 by adstuder          #+#    #+#             */
+/*   Updated: 2018/04/23 23:28:56 by adstuder         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fillit.h"
+#include "../includes/fillit.h"
 
-int		ft_strcmp(const char *s1, const char *s2)
+size_t		ft_strlen(const char *s)
 {
-	unsigned char	*str1;
-	unsigned char	*str2;
-	int				i;
+	size_t i;
 
-	str1 = (unsigned char*)s1;
-	str2 = (unsigned char*)s2;
 	i = 0;
-	while ((str1[i] == str2[i]) && (str1[i] != '\0') && (str2[i] != '\0'))
+	while (s[i] != '\0')
 		i++;
-	return (str1[i] - str2[i]);
+	return (i);
 }

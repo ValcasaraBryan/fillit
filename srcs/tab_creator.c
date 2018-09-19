@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fillit.h"
+#include "../includes/fillit.h"
 
 char				**add_piece(char *id_piece, t_tetri *list, char **piece)
 {

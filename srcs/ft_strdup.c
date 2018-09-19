@@ -1,18 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar.c                                       :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adstuder <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/04/19 19:58:03 by adstuder          #+#    #+#             */
-/*   Updated: 2018/04/23 23:26:03 by adstuder         ###   ########.fr       */
+/*   Created: 2018/04/13 17:37:58 by adstuder          #+#    #+#             */
+/*   Updated: 2018/04/26 19:14:23 by adstuder         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fillit.h"
+#include "../includes/fillit.h"
 
-void	ft_putchar(char c)
+char	*ft_strdup(const char *s1)
 {
-	write(1, &c, 1);
+	int		i;
+	char	*cpy;
+
+	i = 0;
+	while (s1[i] != '\0')
+		i++;
+	if (!(cpy = (char *)malloc(sizeof(char) * (i + 1))))
+		return (0);
+	i = 0;
+	while (s1[i] != '\0')
+	{
+		cpy[i] = s1[i];
+		i++;
+	}
+	cpy[i] = '\0';
+	return (cpy);
 }
